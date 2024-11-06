@@ -1,8 +1,8 @@
 const env = {
-    database: 'basefinal', // Nombre de la base de datos
-    username: 'basefinal_user', // Nombre de usuario
-    password: 'xEaWYluoSVpfA59VeI20nP1TPdwO1rAB', // Contraseña
-    host: 'dpg-cslrt252ng1s73be809g-a.oregon-postgres.render.com', // Host de la base de datos
+    database: 'postgresql', // Nombre de la base de datos
+    username: 'examenfinal2_user', // Nombre de usuario
+    password: 'm4er4qhn75APuRme0444S3udGLwqEfaU', // Contraseña
+    host: 'ddpg-cslsujd6l47c73aah2b0-a.oregon-postgres.render.com', // Host de la base de datos
     dialect: 'postgres', // Tipo de base de datos
     pool: {
       max: 5, // Máximo número de conexiones
