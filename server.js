@@ -1,37 +1,35 @@
-// Importamos el modulo express 
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-
+const express = require('express');
 const app = express();
 
-var corsOptions = {
-  origin: "http://localhost:8081"
-};
-
-app.use(cors(corsOptions));
-
-// parse requests of content-type - application/json
-app.use(bodyParser.json());
-
-// parse requests of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
-
+const cors = require('cors');
 const db = require("./app/models/cliente.model.js");
-db.sequelize.sync();
-// // drop the table if it already exists
-// db.sequelize.sync({ force: true }).then(() => {
-//   console.log("Drop and re-sync db.");
-// });
 
-// simple route
-app.get("/", (req, res) => {
-  res.json({ message: "UMG Web Application" });
+// Sincronizar la base de datos (¡Usa esto con cuidado!)
+db.sequelize.sync().then(() => {
+  console.log('Base de datos sincronizada correctamente');
 });
 
-require("./app/routes/cliente.routes")(app);
-// set port, listen for requests
-const PORT = process.env.PORT || 8081;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
+// CORS Configuration
+const corsOptions = {
+  origin: 'http://localhost:4200',
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
+
+// Middleware para interpretar JSON (reemplaza body-parser)
+app.use(express.json());
+
+// Importar rutas
+let router = require("./app/routes/cliente.routes");
+app.use('/', router);
+
+// Ruta principal de prueba
+app.get("/", (req, res) => {
+  res.json({ message: "Bienvenido Estudiantes de UMG" });
+});
+
+// Crear un servidor
+const server = app.listen(8080, function () {
+  let port = server.address().port;
+  console.log(`App listening at http://localhost:${port}`);
 });
