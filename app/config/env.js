@@ -1,5 +1,5 @@
 const env = {
-    database: 'postgresql', // Nombre de la base de datos
+    database: 'examenfinal2', // Nombre de la base de datos
     username: 'examenfinal2_user', // Nombre de usuario
     password: 'm4er4qhn75APuRme0444S3udGLwqEfaU', // Contraseña
     host: 'ddpg-cslsujd6l47c73aah2b0-a.oregon-postgres.render.com', // Host de la base de datos
@@ -13,4 +13,3 @@ const env = {
   };
   
   module.exports = env;
-  
